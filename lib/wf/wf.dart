@@ -40,7 +40,8 @@ class _WeatherForecastState extends State<WeatherForecast> {
                       if(!snapshot.hasData)
                         return Center(child: CircularProgressIndicator(),);
                       return Column(children: [
-                        MidView(snapshot: snapshot.data?.toJson())
+                        MidView(snapshot: snapshot.data?.toJson()),
+                        BottomView(snapshot: snapshot.data?.toJson())
                       ],);
                   // if (snapshot.hasData) {
                   //   return Column(
