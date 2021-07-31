@@ -19,7 +19,7 @@ class WeatherForecastModel {
     cnt = json['cnt'];
     if (json['list'] != null) {
       // ignore: deprecated_member_use
-      list = new List<Lista>.empty();
+      list = [];
       json['list'].forEach((v) {
         list.add(new Lista.fromJson(v));
       });
@@ -135,16 +135,16 @@ class Lista {
     humidity = json['humidity'];
     if (json['weather'] != null) {
       // ignore: deprecated_member_use
-      weather = new List<Weather>.empty();
+      weather = [];
       json['weather'].forEach((v) {
-    ;
+       weather.add(new Weather.fromJson(v));
       });
     }
     speed = json['speed'];
     deg = json['deg'];
     clouds = json['clouds'];
-    snow = json['snow'];
-    rain = json['rain'];
+    snow = json['snow'] ?? 0;
+    rain = json['rain'] ?? 0;
   }
 
   Map<String, dynamic> toJson() {

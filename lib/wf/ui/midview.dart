@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MidView extends StatelessWidget {
-  final AsyncSnapshot<WeatherForecastModel> snapshot;
-
-  const MidView({required Key key, required this.snapshot}) : super(key: key);
+  final dynamic snapshot;
+  MidView({this.snapshot});
   @override
   Widget build(BuildContext context) {
 
-    var forecastList = snapshot.data!.list;
-    var city = snapshot.data!.city.name;
-    var country = snapshot.data!.city.country;
+    var forecastList = snapshot['list'];
+    var city = snapshot['city']['name'];    // var city = snapshot.data!.city.name;
+    var country = snapshot['city']['country'];    // var city = snapshot.data!.city.name;
     var formattedDate =
-    new DateTime.fromMillisecondsSinceEpoch(forecastList[0].dt * 1000);
+    new DateTime.fromMillisecondsSinceEpoch(forecastList[0]['dt'] * 1000);
     var forecast = forecastList[0];
 
     return Container(
@@ -42,7 +41,7 @@ class MidView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: getWeatherIcon(
-                  weatherDescription: forecastList[0].weather[0].main,
+                  weatherDescription: forecastList[0]['weather'][0]['main'],
                   color: Colors.pinkAccent,
                   size: 198),
             ),
@@ -55,12 +54,12 @@ class MidView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "${forecast.temp.day.toStringAsFixed(0)}°F",
+                    "${forecast['temp']['day'].toStringAsFixed(0)}°F",
                     style: TextStyle(fontSize: 34),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("${forecast.weather[0].description.toUpperCase()}"),
+                    child: Text("${forecast['weather'][0]['description'].toUpperCase()}"),
                   ),
                 ],
               ),
@@ -77,7 +76,7 @@ class MidView extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("${forecast.speed.toStringAsFixed(1)} mi/h"),
+                        Text("${forecast['speed'].toStringAsFixed(1)} mi/h"),
                         Icon(
                           FontAwesomeIcons.wind,
                           size: 20,
@@ -92,7 +91,7 @@ class MidView extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("${forecast.humidity.toStringAsFixed(0)} %"),
+                        Text("${forecast['humidity'].toStringAsFixed(0)} %"),
                         Icon(
                           FontAwesomeIcons.solidGrinBeamSweat,
                           size: 20,
@@ -106,7 +105,7 @@ class MidView extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("${forecast.temp.max.toStringAsFixed(0)}°F "),
+                        Text("${forecast['temp']['max'].toStringAsFixed(0)}°F "),
                         Icon(
                           FontAwesomeIcons.temperatureHigh,
                           size: 20,

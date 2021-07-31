@@ -37,22 +37,27 @@ class _WeatherForecastState extends State<WeatherForecast> {
                 future: forecastObject,
                 builder: (BuildContext context,
                     AsyncSnapshot<WeatherForecastModel> snapshot) {
-                  if (snapshot.hasData) {
-                    return Column(
-                      children: <Widget>[
-                        midView(snapshot),
-                        //midView(snapshot),
-                        bottomView(snapshot, context)
-                        //bottomView(snapshot, context)
-                      ],
-                    );
-                  } else {
-                    return Container(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }
+                      if(!snapshot.hasData)
+                        return Center(child: CircularProgressIndicator(),);
+                      return Column(children: [
+                        MidView(snapshot: snapshot.data?.toJson())
+                      ],);
+                  // if (snapshot.hasData) {
+                  //   return Column(
+                  //     children: <Widget>[
+                  //       MidView(snapshot : snap)
+                  //       //midView(snapshot),
+                  //       // bottomView(snapshot, context)
+                  //       //bottomView(snapshot, context)
+                  //     ],
+                  //   );
+                  // } else {
+                  //   return Container(
+                  //     child: Center(
+                  //       child: CircularProgressIndicator(),
+                  //     ),
+                  //   );
+                  // }
                 }),
           )
         ],
