@@ -18,7 +18,6 @@ class WeatherForecastModel {
     message = json['message'];
     cnt = json['cnt'];
     if (json['list'] != null) {
-      // ignore: deprecated_member_use
       list = [];
       json['list'].forEach((v) {
         list.add(new Lista.fromJson(v));
@@ -134,7 +133,6 @@ class Lista {
     pressure = json['pressure'];
     humidity = json['humidity'];
     if (json['weather'] != null) {
-      // ignore: deprecated_member_use
       weather = [];
       json['weather'].forEach((v) {
        weather.add(new Weather.fromJson(v));

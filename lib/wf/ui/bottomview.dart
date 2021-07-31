@@ -1,6 +1,4 @@
-import 'package:forecast/wf/model/wfm.dart';
 import 'package:flutter/material.dart';
-
 import 'package:forecast/wf/ui/forecastcard.dart';
 
 //Better way of doing business!
@@ -22,7 +20,7 @@ class BottomView extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 16, horizontal: 10),
           child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (context, index) => SizedBox(width: 8),
+              separatorBuilder: (context, index) => SizedBox(width: 15),
               itemCount: snapshot['list'].length,
               itemBuilder: (context, index) => ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),

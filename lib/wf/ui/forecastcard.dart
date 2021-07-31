@@ -1,5 +1,3 @@
-import 'package:forecast/wf/model/wfm.dart';
-
 import 'package:forecast/wf/util/forecastutil.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
